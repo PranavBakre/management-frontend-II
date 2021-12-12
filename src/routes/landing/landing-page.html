@@ -1,0 +1,23 @@
+<div class="h-screen w-screen bg-gray-900">
+  <div class="animator w-full flex flex-col justify-center items-center h-4/6">
+    <div
+      class="p-4 flex flex-col justify-center border-2 border-blue-300 rounded-lg"
+    >
+      <img src="logo.svg" class="h-48" />
+      <div class="text-3xl text-white bg-purple-500 px-4 py-2 rounded-lg">
+        Management
+      </div>
+    </div>
+    <div class="buttons mt-3">
+      <div class="text-white text-center">Sign in with</div>
+      <button
+        name="google"
+        class="flex mt-1 bg-white rounded-full p-2 items-center outline-none border-none transform transition hover:scale-110 shadow-sm"
+        click.trigger="login($event)"
+      >
+        <img src="Google.svg" class="inline" alt="Google" />
+        <div class="text-black pl-2 inline text-xl font-sans">Google</div>
+      </button>
+    </div>
+  </div>
+</div>

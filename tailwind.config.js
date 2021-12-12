@@ -1,8 +1,17 @@
 module.exports = {
-  purge: [],
+  purge: {
+    enabled: true,
+    content: [
+      "./src/**/*.html",
+      './src/**/*.ts',
+      './src/**/*.css',
+    ]
+  },
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      scale: ["hover"]
+    },
   },
   variants: {
     extend: {},

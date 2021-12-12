@@ -1,0 +1,19 @@
+.loader {
+  animation-name: slider;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  background: linear-gradient(90deg, violet, cyan);
+  @apply w-40 h-1 mt-2 rounded-full;
+}
+
+@keyframes slider {
+  0% {
+    transform: translateX(-50%) scaleX(0.5);
+  }
+  50% {
+    transform: translateX(50%) scaleX(0.5);
+  }
+  100% {
+    transform: translateX(-50%) scaleX(0.5);
+  }
+}

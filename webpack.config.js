@@ -19,6 +19,7 @@ const postcssLoader = {
 
 module.exports = function(env, { analyze }) {
   const production = env.production || process.env.NODE_ENV === 'production';
+  const environment = process.env.NODE_ENV ?? "development";
   return {
     target: 'web',
     mode: production ? 'production' : 'development',
@@ -37,7 +38,8 @@ module.exports = function(env, { analyze }) {
     devServer: {
       historyApiFallback: true,
       open: !process.env.CI,
-      port: 3000
+      port: 3000,
+      host: "0.0.0.0"
     },
     module: {
       rules: [
@@ -86,7 +88,7 @@ module.exports = function(env, { analyze }) {
         patterns: [{ from: "public/" }],
       }),
       new Dotenv({
-        path: `./.env${production ? '' :  '.' + process.env.NODE_ENV}`,
+        path: `./.env${production ? '' :  '.' + environment}`,
       }),
       analyze && new BundleAnalyzerPlugin()
     ].filter(p => p)
