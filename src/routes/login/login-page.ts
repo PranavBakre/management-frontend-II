@@ -2,13 +2,16 @@ import { inject, IRouteViewModel, Params } from "aurelia";
 import { ApiClient } from "services/api-client";
 import { Action, login } from "store/actions";
 import {dispatchify} from "@aurelia/store-v1";
+import { IRouter } from "aurelia-direct-router";
 
-@inject(ApiClient)
+@inject(ApiClient, IRouter)
 export class LoginPage implements IRouteViewModel {
   apiClient: ApiClient;
+  router: IRouter
   login: Action
-  constructor(apiClient: ApiClient) {
+  constructor(apiClient: ApiClient, router: IRouter) {
     this.apiClient = apiClient;
+    this.router = router;
     this.login = dispatchify(login);
   }
 
@@ -26,6 +29,11 @@ export class LoginPage implements IRouteViewModel {
           Promise.reject(jsonResponse);
         })
         .then((response) => this.login(response))
+        .then(() => {
+          this.router.load("/app",{
+            replace: true
+          })
+        })
         .catch((error) => console.log(error));
   };
 }
